@@ -9,15 +9,14 @@ public class Genre {
     @Column(name = "genres")
     private String genre;
 
-
-    public Genre() {
-    }
+    public Genre() {}
 
     public Genre(String genre) {
         this.genre = genre;
     }
 
-    // getters and setters
+    // Getters and Setters
+
     public String getGenre() {
         return genre;
     }
