@@ -73,7 +73,7 @@ public class Game {
         this.publisher = publisher;
         this.owner = owner;
         this.holder = holder;
-        this.lendingDate = lendingDate;
+        this.setLendingDate(lendingDate);
     }
 
     public Game() {}
@@ -142,6 +142,9 @@ public class Game {
 
     public void setHolder(@NotEmpty User holder) {
         this.holder = holder;
+        if (this.holder.equals(this.owner)) {
+            this.lendingDate = null;
+        }
     }
 
     public LocalDateTime getLendingDate() {
@@ -149,6 +152,10 @@ public class Game {
     }
 
     public void setLendingDate(LocalDateTime lendingDate) {
-        this.lendingDate = lendingDate;
+        if (!this.holder.equals(this.owner)) {
+            this.lendingDate = lendingDate;
+        } else {
+            this.lendingDate = null;
+        }
     }
 }
