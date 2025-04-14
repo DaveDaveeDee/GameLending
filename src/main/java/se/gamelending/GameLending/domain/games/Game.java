@@ -3,11 +3,11 @@ package se.gamelending.GameLending.domain.games;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+
 import se.gamelending.GameLending.domain.users.User;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
 
 @Entity
 @Table(name = "games")
@@ -57,8 +57,15 @@ public class Game {
     @Column(name = "lendingdate", columnDefinition = "DATETIME")
     private LocalDateTime lendingDate;
 
-    public Game(String name, String console, List<Genre> genres, int publishingYear,
-                String publisher, User owner, User holder, LocalDateTime lendingDate) {
+    public Game(
+            @NotEmpty String name,
+            @NotEmpty String console,
+            @NotNull List<Genre> genres,
+            @NotNull int publishingYear,
+            @NotEmpty String publisher,
+            @NotNull User owner,
+            @NotNull User holder,
+            LocalDateTime lendingDate) {
         this.name = name;
         this.console = console;
         this.genres = genres;
@@ -69,8 +76,7 @@ public class Game {
         this.lendingDate = lendingDate;
     }
 
-    public Game() {
-    }
+    public Game() {}
 
     // Getters and Setters
 
@@ -86,7 +92,7 @@ public class Game {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@NotEmpty String name) {
         this.name = name;
     }
 
@@ -94,7 +100,7 @@ public class Game {
         return console;
     }
 
-    public void setConsole(String console) {
+    public void setConsole(@NotEmpty String console) {
         this.console = console;
     }
 
@@ -102,7 +108,7 @@ public class Game {
         return genres;
     }
 
-    public void setGenres(List<Genre> genres) {
+    public void setGenres(@NotNull List<Genre> genres) {
         this.genres = genres;
     }
 
@@ -110,7 +116,7 @@ public class Game {
         return publishingYear;
     }
 
-    public void setPublishingYear(int publishingYear) {
+    public void setPublishingYear(@NotNull int publishingYear) {
         this.publishingYear = publishingYear;
     }
 
@@ -118,7 +124,7 @@ public class Game {
         return publisher;
     }
 
-    public void setPublisher(String publisher) {
+    public void setPublisher(@NotEmpty String publisher) {
         this.publisher = publisher;
     }
 
@@ -126,7 +132,7 @@ public class Game {
         return owner;
     }
 
-    public void setOwner(User owner) {
+    public void setOwner(@NotEmpty User owner) {
         this.owner = owner;
     }
 
@@ -134,7 +140,7 @@ public class Game {
         return holder;
     }
 
-    public void setHolder(User holder) {
+    public void setHolder(@NotEmpty User holder) {
         this.holder = holder;
     }
 
