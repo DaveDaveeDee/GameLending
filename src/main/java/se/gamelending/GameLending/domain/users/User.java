@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
@@ -11,17 +12,20 @@ public class User {
 
     @Id
     @Column(name = "username")
+    @NotBlank
     private String username;
 
     @Column(name = "email")
+    @NotBlank
     private String email;
 
     @Column(name = "password")
+    @NotBlank
     private String password;
 
     public User() {}
 
-    public User(String username, String email, String password) {
+    public User(@NotBlank String username, @NotBlank String email, @NotBlank String password) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -31,7 +35,7 @@ public class User {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(@NotBlank String username) {
         this.username = username;
     }
 
@@ -39,7 +43,7 @@ public class User {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(@NotBlank String email) {
         this.email = email;
     }
 
@@ -47,7 +51,7 @@ public class User {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(@NotBlank String password) {
         this.password = password;
     }
 }
